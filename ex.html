@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Print Child Element</title>
+</head>
+<body>
+
+
+
+<form action="./demo.php" method="post" onsubmit="return chk()">
+    <input type="text" name="name" hint="name" id="name"><input type="text" name="empid" hint="EmpID" id="empid">
+    <input type="date" name="dob" id="dob" hint="dob">
+    <input type="submit" value="submit">
+</form>
+<script>
+    function chk(){
+    nm=document.getElementById('name').value
+    empid=document.getElementById('empid').value
+    dob=document.getElementById('dob').value
+    const d = new Date(String(dob));
+let  dobM= d.getMonth();
+let dobY=d.getFullYear()
+let dobDt=d.getDate()
+let nowD=new Date()
+let nowM=nowD.getMonth()
+let nowY=nowD.getFullYear()
+let nowDt=nowD.getDate()
+if(nowY-dobY-1 >=18){
+ alert('18')
+}
+else{
+ if(nowY-dobY-1==17 && nowM-dobM==0 && nowDt-dobDt==0){
+  alert('18')
+ }
+ else{
+  alert('not 18')
+  return false
+ }
+}
+
+    console.log(typeof(dob))
+    dobDate=new Date(String(dob))
+    dobM=dobDate.getMonth()
+    console.log(nm+' '+empid+' '+dobM)
+    if(nm=='' || nm==null){
+        alert('Invalid name')
+        return false;
+    }
+    if(empid.length!=5 ||empid==null || empid==''){
+        alert('Invalid EmpID!')
+        return false;
+    }
+    return true;
+}
+
+</script>
+</body>
+</html>
